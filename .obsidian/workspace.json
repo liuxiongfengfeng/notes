@@ -1,0 +1,156 @@
+{
+  "main": {
+    "id": "95d4bd8fb291bad5",
+    "type": "split",
+    "children": [
+      {
+        "id": "f7d93c45febfe017",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "54929335b7a34f6e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Git/Git笔记.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "78956528c2712f6d",
+    "type": "split",
+    "children": [
+      {
+        "id": "c355fd73b927850e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1e03dcabf9daad0e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8bdb500b38046415",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "68f810664a9cab05",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "f8b3ed985c8fcf41",
+    "type": "split",
+    "children": [
+      {
+        "id": "53a5ffcfad5c0de7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c4f6438173fe5784",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Git/Git笔记.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "af60442819d7f13b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Git/Git笔记.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c7acbd9acc19e560",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "cddadefe0b244219",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Git/Git笔记.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 317,
+    "collapsed": true
+  },
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "54929335b7a34f6e",
+  "lastOpenFiles": [
+    "Maven/Maven笔记.md",
+    "Git/Git笔记.md",
+    "Spring/Spring 笔记.md",
+    "2022-10-17.md",
+    "Git/附件/git状态图1.png",
+    "未命名.md",
+    "Linux/附件/case.jpg",
+    "Linux/Linux学习笔记.md",
+    "JVM/JVM笔记.md",
+    "Maven/附件/maven基本工作流程.png"
+  ]
+}
