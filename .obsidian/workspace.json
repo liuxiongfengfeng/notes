@@ -4,22 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "f7d93c45febfe017",
+        "id": "b96afa1f35e0c595",
         "type": "tabs",
         "children": [
           {
-            "id": "54929335b7a34f6e",
+            "id": "e0e8493ab26afa20",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Git/Git笔记.md",
+                "file": "SpringBoot/SpringBoot笔记.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "79f92c451db4c713",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "设计模式/设计模式.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c1a2a850347012f4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Redis/Redis笔记.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -85,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Git/Git笔记.md",
+                "file": "Redis/Redis笔记.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Git/Git笔记.md",
+                "file": "Redis/Redis笔记.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,8 +150,16 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Git/Git笔记.md"
+                "file": "Redis/Redis笔记.md"
               }
+            }
+          },
+          {
+            "id": "9fff5f2a3be5e1b5",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
             }
           }
         ],
@@ -140,17 +173,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "54929335b7a34f6e",
+  "active": "c1a2a850347012f4",
   "lastOpenFiles": [
     "Maven/Maven笔记.md",
+    "设计模式/设计模式.md",
+    "Redis/Redis笔记.md",
+    "Linux/Linux学习笔记.md",
+    "SpringBoot/SpringBoot笔记.md",
     "Git/Git笔记.md",
     "Spring/Spring 笔记.md",
+    "Maven/附件/maven基本工作流程.png",
     "2022-10-17.md",
-    "Git/附件/git状态图1.png",
-    "未命名.md",
-    "Linux/附件/case.jpg",
-    "Linux/Linux学习笔记.md",
-    "JVM/JVM笔记.md",
-    "Maven/附件/maven基本工作流程.png"
+    "Git/附件/git状态图1.png"
   ]
 }

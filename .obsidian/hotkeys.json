@@ -1,1 +1,11 @@
-{}
+{
+  "highlightr-plugin:Blue": [],
+  "highlightr-plugin:Green": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
+    }
+  ]
+}

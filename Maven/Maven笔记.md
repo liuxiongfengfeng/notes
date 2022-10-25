@@ -225,11 +225,13 @@ jdbc.password=${jdbc.password}
         <!--开发环境-->  
         <profile>  
             <id>dev_env</id>  
-            <properties>                <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>  
+            <properties>                
+	            <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>  
                 <jdbc.url>jdbc:mysql://127.0.0.1:3306/test01</jdbc.url>  
                 <jdbc.username>root</jdbc.username>  
                 <jdbc.password>123456</jdbc.password>  
-            </properties><!--            &lt;!&ndash;激活&ndash;&gt;-->  
+            </properties>
+<!--            &lt;!&ndash;激活&ndash;&gt;-->  
 <!--            <activation>-->  
 <!--                &lt;!&ndash;配置默认激活环境&ndash;&gt;-->  
 <!--                <activeByDefault>true</activeByDefault>-->  
@@ -238,7 +240,8 @@ jdbc.password=${jdbc.password}
         <!--生产环境-->  
         <profile>  
             <id>pro_env</id>  
-            <properties>                <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>  
+            <properties>                
+	            <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>  
                 <jdbc.url>jdbc:mysql://192.168.2.129:3306/test01</jdbc.url>  
                 <jdbc.username>root</jdbc.username>  
                 <jdbc.password>123456</jdbc.password>  
@@ -246,5 +249,7 @@ jdbc.password=${jdbc.password}
             <activation>  
                 <!--配置默认激活环境-->  
                 <activeByDefault>true</activeByDefault>  
-            </activation>        </profile>    </profiles>
+            </activation>        
+        </profile>
+    </profiles>
 ```
