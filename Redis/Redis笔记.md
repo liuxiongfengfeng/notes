@@ -933,3 +933,149 @@ XACK key group id [id ...]
 #获取pending-list中的消息，start、end可为 -|+:最小|最大
 XPENDING key group [[IDLE min-idle-time] start end count [consumer]]
 ```
+
+###### 9-2-6.Stream消费者组基本应用（秒杀优惠卷业务）
+思路：思路和 <mark style="background: #BBFABBA6;">8.秒杀优惠卷业务优化</mark>的思路类似，只是在lua脚本中校验了用户有购买资格后，将订单信息添加到消息队列中
+实现：
+（1）lua脚本
+```lua
+-- 1.参数列表  
+-- 1.1 voucherId  
+local voucherId = ARGV[1]  
+-- 1.2 userId  
+local userId = ARGV[2]  
+-- 1.3 orderId  
+local orderId = ARGV[3]  
+  
+-- key  
+local stockKey = "seckill:stock:" .. voucherId  
+local orderKey = "seckill:order:" .. voucherId  
+  
+if (tonumber(redis.call("get",stockKey)) <= 0) then  
+    -- 库存不足  
+    return 1  
+end  
+  
+if (redis.call("sismember",orderKey,userId) == 1) then  
+    -- 重复购买  
+    return 2  
+end  
+  
+redis.call("incrby",stockKey,-1)  
+redis.call("sadd",orderKey,userId)  
+  
+-- 加入消息队列  
+redis.call("xadd","redis.order","*","id",orderId,"voucherId",voucherId,"userId",userId)  
+return 0
+```
+（2）java代码
+```java
+@Resource  
+private StringRedisTemplate stringRedisTemplate;  
+
+//生成订单id工具类
+@Resource  
+private RedisIdWorker redisIdWorker;
+class CreateOrder implements Runnable{  
+    @SneakyThrows  
+    @Override    
+    public void run() {  
+        while (true){
+            try {
+		        //读取消息队列中的消息  
+                List<MapRecord<String, Object, Object>> msg = 
+                stringRedisTemplate
+                .opsForStream()
+                .read(  
+                Consumer.from("gorder", "cum1"),  
+                StreamReadOptions.empty().block(Duration.ofSeconds(3)).count(1),  
+                StreamOffset.create("redis.order",ReadOffset.lastConsumed()));  
+				// 如果消息队列为空，进行下一次循环，继续读取消息
+                if (msg.isEmpty() || msg == null){  
+                    continue;  
+                }
+                //读取到消息，构架订单
+                MapRecord<String, Object, Object> entries = msg.get(0);  
+                Map<Object, Object> orderInfos = entries.getValue();  
+                VoucherOrder voucherOrder = BeanUtil.fillBeanWithMap(
+		                orderInfos,
+		                new VoucherOrder(),
+		                true);  
+                // 处理消息，构建订单  
+                proxy.createVoucherOrder(voucherOrder);  
+                //消息确认  
+                stringRedisTemplate
+	                .opsForStream()
+	                .acknowledge("redis.order",
+				                "gorder",
+				                entries.getId());  
+            }catch (Exception e){  
+                // 处理消息出错，消息未确认进入到pending-list,处理pending-list 中的消息  
+                while (true) {  
+                    try {  
+		                //读取pending-list中的消息
+                        List<MapRecord<String, Object, Object>> msg =
+	                         stringRedisTemplate.opsForStream().read(  
+                                Consumer.from("gorder", "cum1"),  
+                                StreamReadOptions.empty().count(1),  
+		                        StreamOffset.create(
+			                        "redis.order",
+			                        ReadOffset.from("0")));  
+						// pending-list为空，结束读取pending-list
+                        if (msg.isEmpty() || msg == null) {  
+                            break;  
+                        }  
+                        MapRecord<String, Object, Object> entries = msg.get(0);  
+                        Map<Object, Object> orderInfos = entries.getValue();  
+                        VoucherOrder voucherOrder =
+	                         BeanUtil.fillBeanWithMap(
+		                         orderInfos,
+		                         new VoucherOrder(),
+		                         true);  
+                        // 处理消息，构建订单  
+                        proxy.createVoucherOrder(voucherOrder);  
+                        //消息确认  
+			            stringRedisTemplate
+				            .opsForStream()
+				            .acknowledge(
+					            "redis.order",
+					            "gorder",
+					            entries.getId());  
+                    }catch (Exception ex){  
+                        log.error("pending-list 消息处理异常");  
+                    }  
+                }  
+            }  
+        }  
+    }  
+}
+
+//构建lua脚本对象
+private static final DefaultRedisScript<Long> SECKILL_CERIPT;  
+static {  
+    SECKILL_CERIPT = new DefaultRedisScript<>();  
+    SECKILL_CERIPT.setLocation(new ClassPathResource("seckillVoucher.lua"));  
+    SECKILL_CERIPT.setResultType(Long.class);  
+}  
+  
+@Override  
+public Result seckillVoucher(Long voucherId){  
+    Long userId = UserHolder.getUser().getId();  
+    long orderId = redisIdWorker.nextId(ICR_ORDER_KEY);  
+    Long result = stringRedisTemplate.execute(  
+            SECKILL_CERIPT,  
+            Collections.emptyList(),  
+            voucherId.toString(),  
+            userId.toString(),  
+            Long.toString(orderId));  
+  
+    // 不等于 0 订单构建失败  
+    int i = result.intValue();  
+    if (i != 0){  
+        return Result.fail(i == 1 ? "优惠卷库存不足" : "优惠卷限购一张");  
+    }  
+	//暴露当前，创建代理对象，以便调用当前类的方法，能提交事务
+    proxy = (IVoucherOrderService)AopContext.currentProxy();  
+    return Result.ok(orderId);  
+}
+```

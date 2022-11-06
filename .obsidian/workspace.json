@@ -147,6 +147,7 @@
   "active": "e10eab3c52cb6394",
   "lastOpenFiles": [
     "Redis/Redis笔记.md",
+    "Git/Git笔记.md",
     "SpringBoot/SpringBoot笔记.md",
     "线程池/附件/线程池工作流程.png",
     "设计模式/设计模式.md",
@@ -154,7 +155,6 @@
     "Redis/附件/缓存更新策略.png",
     "线程池/线程池笔记.md",
     "线程池/附件/线程池工作流程.jpg",
-    "线程池工作流程.png.md",
-    "Stream/Stream流.md"
+    "线程池工作流程.png.md"
   ]
 }
