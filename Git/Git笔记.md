@@ -10,7 +10,7 @@ git config --global user.email "xxx@xx.com"
 git config --global user.name
 git config --global user.email
 #### 2.2 起别名
-2.2.1 在用户目录下创建一个 .bashrc文集
+2.2.1 在用户目录下创建一个 .bashrc文件
 2.2.2 在里面填写别名信息：alias ll='ls -al'
 2.2.3 source ~/.bashrc
 #### 2.3 创建本地仓库

@@ -8,43 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "e0e8493ab26afa20",
+            "id": "e10eab3c52cb6394",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SpringBoot/SpringBoot笔记.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "79f92c451db4c713",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "设计模式/设计模式.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c1a2a850347012f4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Redis/Redis笔记.md",
+                "file": "Git/Git笔记.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Redis/Redis笔记.md",
+                "file": "Git/Git笔记.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Redis/Redis笔记.md",
+                "file": "Git/Git笔记.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Redis/Redis笔记.md"
+                "file": "Git/Git笔记.md"
               }
             }
           },
@@ -167,23 +142,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 317,
-    "collapsed": true
+    "width": 317
   },
-  "ribbon": {
-    "mostRecentAction": ""
-  },
-  "active": "c1a2a850347012f4",
+  "active": "e10eab3c52cb6394",
   "lastOpenFiles": [
-    "Maven/Maven笔记.md",
-    "设计模式/设计模式.md",
     "Redis/Redis笔记.md",
-    "Linux/Linux学习笔记.md",
     "SpringBoot/SpringBoot笔记.md",
-    "Git/Git笔记.md",
-    "Spring/Spring 笔记.md",
-    "Maven/附件/maven基本工作流程.png",
-    "2022-10-17.md",
-    "Git/附件/git状态图1.png"
+    "线程池/附件/线程池工作流程.png",
+    "设计模式/设计模式.md",
+    "Redis/附件/悲观锁和乐观锁.png",
+    "Redis/附件/缓存更新策略.png",
+    "线程池/线程池笔记.md",
+    "线程池/附件/线程池工作流程.jpg",
+    "线程池工作流程.png.md",
+    "Stream/Stream流.md"
   ]
 }
